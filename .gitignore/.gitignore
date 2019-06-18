@@ -1,0 +1,42 @@
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+var stdin_input = "";
+
+process.stdin.on("data", function (input) {
+    stdin_input += input;     
+});
+
+process.stdin.on("end", function () {
+   main(stdin_input);
+});
+
+function main(input) {
+//aeiouy
+var letter=input.substring(2,3);
+if(letter.includes("A")||letter.includes("E")||letter.includes("I")||letter.includes("O")||letter.includes("U")||letter.includes("Y"))
+{
+    console.log("invalid");return;
+}
+var zahl=[];
+zahl.push(Number(input.substring(0,1)));
+zahl.push(Number(input.substring(1,2)));
+zahl.push(Number(input.substring(3,4)));
+zahl.push(Number(input.substring(4,5)));
+zahl.push(Number(input.substring(5,6)));
+zahl.push(Number(input.substring(7,8)));
+zahl.push(Number(input.substring(8,9)));
+var erg=0;
+for(var x=0;x<7;x++)
+{
+    if((zahl[x]+zahl[x+1])/2===Math.round((zahl[x]+zahl[x+1])/2))
+    {
+    erg=1;
+    }
+}    
+    if(erg===0)
+    {
+        console.log("valid");
+    }else{
+        console.log("invalid");
+    }
+}
